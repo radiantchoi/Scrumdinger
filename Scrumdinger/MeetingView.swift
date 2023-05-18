@@ -21,8 +21,8 @@ struct MeetingView: View {
                 }
                 
                 Spacer()
+                
                 VStack(alignment: .trailing) {
-                    
                     Text("Seconds Remaining")
                         .font(.caption)
                     

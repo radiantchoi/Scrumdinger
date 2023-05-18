@@ -4,13 +4,23 @@
 //
 //  Created by Gordon Choi on 2023/05/18.
 //
+import Foundation
 
-struct DailyScrum {
+struct DailyScrum: Identifiable {
     // 프로퍼티를 var로 할 필요가 있을지 과정을 진행하면서 살펴보겠습니다
+    let id: UUID
     var title: String
     var attendees: [String]
     var lengthInMinutes: Int
     var theme: Theme
+    
+    init(id: UUID = UUID(), title: String, attendees: [String], lengthInMinutes: Int, theme: Theme) {
+        self.id = id
+        self.title = title
+        self.attendees = attendees
+        self.lengthInMinutes = lengthInMinutes
+        self.theme = theme
+    }
 }
 
 extension DailyScrum {

@@ -10,6 +10,7 @@ import SwiftUI
 struct CardView: View {
     let scrum: DailyScrum
     
+    // 접근성 레이블도 하나의 하드코딩 값이니까, 메서드 반환값으로 만들어서 따로 빼 줄 수 있으리라 생각됨
     var body: some View {
         VStack(alignment: .leading) {
             Text(scrum.title)
@@ -19,10 +20,12 @@ struct CardView: View {
             
             HStack {
                 Label("\(scrum.attendees.count)", systemImage: "person.3")
+                    .accessibilityLabel("\(scrum.attendees.count) attendees")
                 
                 Spacer()
                 
                 Label("\(scrum.lengthInMinutes)", systemImage: "clock")
+                    .accessibilityLabel("\(scrum.lengthInMinutes) minute meeting")
                     .labelStyle(.trailingIcon)
             }
             .font(.caption)

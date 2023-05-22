@@ -24,10 +24,12 @@ struct DetailEditView: View {
                            step: 1) {
                         Text("Length")
                     }
+                           .accessibilityLabel("\(scrum.lengthInMinutes) minutes")
                     
                     Spacer()
                     
                     Text("\(scrum.lengthInMinutes) minutes")
+                        .accessibilityHidden(true)
                 }
             }
             
@@ -50,6 +52,7 @@ struct DetailEditView: View {
                         }
                     }) {
                         Image(systemName: "plus.circle.fill")
+                            .accessibilityLabel("Add attendee")
                     }
                     .disabled(newAttendeeName.isEmpty)
                 }

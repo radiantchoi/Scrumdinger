@@ -11,6 +11,15 @@ struct DetailEditView: View {
     @State private var scrum = DailyScrum.emptyScrum
     @State private var newAttendeeName = ""
     
+    // SwiftUI Best practice를 좀 찾아보고 어떻게 이 로직을 처리하면 좋을지 생각해보자.
+    private func addAttendeeAction() {
+        withAnimation {
+            let attendee = DailyScrum.Attendee(name: newAttendeeName)
+            scrum.attendees.append(attendee)
+            newAttendeeName = ""
+        }
+    }
+    
     var body: some View {
         Form {
             Section(header: Text("Meeting info")) {
@@ -44,13 +53,7 @@ struct DetailEditView: View {
                 HStack {
                     TextField("New attendee", text: $newAttendeeName)
                     
-                    Button(action: {
-                        withAnimation {
-                            let attendee = DailyScrum.Attendee(name: newAttendeeName)
-                            scrum.attendees.append(attendee)
-                            newAttendeeName = ""
-                        }
-                    }) {
+                    Button(action: addAttendeeAction) {
                         Image(systemName: "plus.circle.fill")
                             .accessibilityLabel("Add attendee")
                     }

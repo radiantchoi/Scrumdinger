@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct DetailEditView: View {
-    @State private var scrum = DailyScrum.emptyScrum
+    @Binding var scrum: DailyScrum
+    
     @State private var newAttendeeName = ""
     
     // SwiftUI Best practice를 좀 찾아보고 어떻게 이 로직을 처리하면 좋을지 생각해보자.
@@ -68,6 +69,6 @@ struct DetailEditView: View {
 
 struct DetailEditView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailEditView()
+        DetailEditView(scrum: .constant(DailyScrum.sampleData[0]))
     }
 }

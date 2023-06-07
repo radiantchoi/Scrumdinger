@@ -7,12 +7,12 @@
 import Foundation
 
 struct DailyScrum: Identifiable {
-    // 프로퍼티를 var로 할 필요가 있을지 과정을 진행하면서 살펴보겠습니다
     let id: UUID
     var title: String
     var attendees: [Attendee]
     var lengthInMinutes: Int
     var theme: Theme
+    var history: [History] = []
     
     var lengthInMinutesAsDouble: Double {
         get {

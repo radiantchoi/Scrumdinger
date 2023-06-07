@@ -9,8 +9,9 @@ import SwiftUI
 
 struct ScrumsView: View {
     @Binding var scrums: [DailyScrum]
-    
+    @Environment(\.scenePhase) private var scenePhase
     @State private var isPresentingNewScrumView = false
+    let saveAction: () -> Void
     
     var body: some View {
         NavigationStack {
@@ -32,6 +33,11 @@ struct ScrumsView: View {
             NewScrumSheet(scrums: $scrums,
                           isPresentingNewSrcumView: $isPresentingNewScrumView)
         }
+        .onChange(of: scenePhase) { phase in
+            if phase == .inactive {
+                saveAction()
+            }
+        }
     }
     
     func plusButtonAction() {
@@ -41,6 +47,6 @@ struct ScrumsView: View {
 
 struct ScrumsView_Previews: PreviewProvider {
     static var previews: some View {
-        ScrumsView(scrums: .constant(DailyScrum.sampleData))
+        ScrumsView(scrums: .constant(DailyScrum.sampleData), saveAction: { })
     }
 }

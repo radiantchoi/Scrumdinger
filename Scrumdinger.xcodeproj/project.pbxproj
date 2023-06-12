@@ -83,6 +83,7 @@
 				4F92D0CA2A3057550089D547 /* MeetingHeaderView.swift */,
 				4F92D0CC2A30E3980089D547 /* MeetingFooterView.swift */,
 				4F2555AE2A3717160089B953 /* MeetingTimerView.swift */,
+				4F2555B02A371A0A0089B953 /* SpeakerArc.swift */,
 				4FE31AAC2A15DA25002AD5A6 /* CardView.swift */,
 				4FE31AAE2A15DE3D002AD5A6 /* TrailingIconLabelStyle.swift */,
 				4F92D0C22A3055560089D547 /* ScrumProgressViewStyle.swift */,
@@ -93,7 +94,6 @@
 				4FC87C862A1F2A19004EE16B /* ThemePicker.swift */,
 				4F92D0CE2A31077E0089D547 /* NewScrumSheet.swift */,
 				4F92D0D62A31186D0089D547 /* ErrorView.swift */,
-				4F2555B02A371A0A0089B953 /* SpeakerArc.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

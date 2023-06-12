@@ -12,6 +12,9 @@ struct MeetingView: View {
     @Binding var scrum: DailyScrum
     
     @StateObject private var scrumTimer = ScrumTimer()
+    @StateObject private var speechRecognizer = SpeechRecognizer()
+    
+    @State private var isRecording = false
     
     private var dingPlayer: AVPlayer {
         AVPlayer.sharedDingPlayer
@@ -50,11 +53,20 @@ struct MeetingView: View {
             dingPlayer.seek(to: .zero)
             dingPlayer.play()
         }
+        
+        speechRecognizer.resetTranscript()
+        speechRecognizer.startTranscribing()
+        isRecording = true
+        
         scrumTimer.startScrum()
     }
     
     private func endScrum() {
         scrumTimer.stopScrum()
+        
+        speechRecognizer.stopTranscribing()
+        isRecording = false
+        
         let newHistory = History(attendees: scrum.attendees)
         scrum.history.insert(newHistory, at: 0)
     }
